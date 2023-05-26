@@ -33,38 +33,38 @@ const Inventory = sequelize.define('Inventory', {
       allowNull: false,
     }
   });
-  // (async () => {
-  //   try {
-  //     await sequelize.sync({ force: true }); 
-  //     console.log('Table created successfully.');
-  //     const names = ['luka', 'bego', 'karo'];
-  //     const places = ['კავეა სითი მოლი', 'კავეა ისთ ფოინთი', 'კავეა გალერია', 'კავეა თბილისი მოლი','სათაო ოფისი'];
+  (async () => {
+    try {
+      await sequelize.sync({ force: true }); 
+      console.log('Table created successfully.');
+      const names = ['luka', 'bego', 'karo'];
+      const places = ['კავეა სითი მოლი', 'კავეა ისთ ფოინთი', 'კავეა გალერია', 'კავეა თბილისი მოლი','სათაო ოფისი'];
   
-  //     const totalItems = 300000;
-  //     const batchSize = 1000;
-  //     const batches = Math.ceil(totalItems / batchSize);
+      const totalItems = 300000;
+      const batchSize = 1000;
+      const batches = Math.ceil(totalItems / batchSize);
   
-  //     for (let i = 0; i < batches; i++) {
-  //       const items = [];
-  //       for (let j = 0; j < batchSize; j++) {
-  //         const name = names[Math.floor(Math.random() * names.length)];
-  //         const place = places[Math.floor(Math.random() * places.length)];
-  //         const price = Math.floor(Math.random() * 1000) + 1;
+      for (let i = 0; i < batches; i++) {
+        const items = [];
+        for (let j = 0; j < batchSize; j++) {
+          const name = names[Math.floor(Math.random() * names.length)];
+          const place = places[Math.floor(Math.random() * places.length)];
+          const price = Math.floor(Math.random() * 1000) + 1;
   
-  //         items.push({ name, place, price });
-  //       }
+          items.push({ name, place, price });
+        }
   
-  //       await Inventory.bulkCreate(items);
-  //       console.log(`Batch ${i + 1} inserted successfully.`);
-  //     }
+        await Inventory.bulkCreate(items);
+        console.log(`Batch ${i + 1} inserted successfully.`);
+      }
   
-  //     console.log('All items inserted successfully.');
-  //   } catch (error) {
-  //     console.error('Error inserting items:', error);
-  //   } finally {
-  //     await sequelize.close();
-  //   }
-  // })();
+      console.log('All items inserted successfully.');
+    } catch (error) {
+      console.error('Error inserting items:', error);
+    } finally {
+      await sequelize.close();
+    }
+  })();
 
 app.get('/inventories', async (req, res) => {
     try {
