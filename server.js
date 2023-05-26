@@ -100,6 +100,6 @@ app.get('/inventories', async (req, res) => {
     res.json({ message: "Item successfully added" })
   });
   app.listen(3001, () => {
-    console.log(`Server is listening on port 6000.`);
+    console.log(`Server is listening on port 3001.`);
   });
 
